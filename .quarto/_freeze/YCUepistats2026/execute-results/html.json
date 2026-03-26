@@ -1,0 +1,15 @@
+{
+  "hash": "4cd6e5843ce5521e21ad2f4263b5252b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"YCUepistats2026\"\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\n## YCU epistats 2026 class\n\n```{webr-r}\n1 + 1\n```\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
