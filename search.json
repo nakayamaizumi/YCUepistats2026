@@ -2,8 +2,8 @@
   {
     "objectID": "YCUepistats2026.html",
     "href": "YCUepistats2026.html",
-    "title": "YCUepistats2026",
+    "title": "YCU epistats 2026",
     "section": "",
-    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "本講義では以下の論文を題材に疫学研究で報告される記述統計および推測統計を読み取り、解釈できるようになることが目標である。\nMarfella R. Microplastics and Nanoplastics in Atheromas and Cardiovascular Events. N Engl J Med. 2024 Mar 7;390(10):900-910\nhttps://www.nejm.org/doi/full/10.1056/NEJMoa2309822\nこのwebページでは以下を用いてデータ分析の演習を行う。\n・模擬データ (data_plastic.csv)\n・web r (https://docs.r-wasm.org/webr/latest/) :ブラウザ上で統計ソフトRを提供する仕組み\nまずデータを読み込む\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nコードの解説：\nパッケージ：\n関数：\n引数：\n” ” : #&lt;- :\nたとえば\nread_csv(“data_plastic.csv”)はxxxxxのような意味である\nhead(data)はyyyyという意味である\n問題:データの読み込み\ndata_plastic.csvには何人含まれていて、変数の数はいくつですか？\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nデータの成型\n読み込んだデータを分析しやすい形式に加工します。\n%&gt;%: パイプ演算子。左のデータを右の関数へ順次渡します。\n&lt;-: 代入演算子。右側の結果を左側の変数に格納します。\nmutate(): 新しい変数を作成または既存の変数を変更します。\nfactor(): 数値や文字列をカテゴリ変数（因子）に変換します。\ndplyr::select(): 必要な変数だけを選択します。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n年齢の分布の可視化（ヒストグラムと箱ひげ図）\nggplot2を用いてデータの分布を視覚的に表現します。\nggplot(): グラフの基本設定。\naes(): グラフに使用する変数を指定します。\ngeom_histogram(): ヒストグラムを描画します。\nbins: ヒストグラムの棒の数を指定。\nfill: 棒の色を指定。\ncolor: 棒の境界線の色を指定。\nalpha: 透明度を指定（0: 完全透明〜1: 不透明）。\ngeom_boxplot(): 箱ひげ図を描画します。\nwidth: 箱の幅を指定。\nxlim: 横軸の表示範囲を指定します。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nIL1bの分布の可視化\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   }
 ]

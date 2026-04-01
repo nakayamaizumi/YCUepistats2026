@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>YCUepistats2026</title>
+<title>YCU epistats 2026 – YCUepistats2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -369,7 +369,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"1 + 1","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"url <- \"https://raw.githubusercontent.com/nakayamaizumi/YCUepistats2026/refs/heads/main/data/plastic_2025.csv\"\n\ndownload.file(url, \"data_plastic.csv\")\n\nlist.files()","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"install.packages(\"tidyverse\")\ndata <- readr::read_csv(\"data_plastic.csv\")\n\nhead(data)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"url <- \"https://raw.githubusercontent.com/nakayamaizumi/YCUepistats2026/refs/heads/main/data/plastic_2025.csv\"\n\ndownload.file(url, \"data_plastic.csv\")\n\nlist.files()","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"install.packages(\"tidyverse\")\ndata_plastic <- readr::read_csv(\"data_plastic.csv\")\n\nhead(data_plastic)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"str(data_plastic)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"data_plastic <- data_plastic %>% \n  mutate(\n    MNPありなし = factor(MNP, levels = c(1,0), labels = c(\"あり\",\"なし\")),\n    sex = factor(male, levels = c(1,0), labels = c(\"男性\",\"女性\")),\n    高血圧 = factor(HTN, levels = c(1,0), labels = c(\"あり\",\"なし\")),\n    心血管疾患 = factor(CVD, levels = c(1,0), labels = c(\"発症\",\"なし\"))\n  ) %>%\n  dplyr::select(rowID, MNPありなし, polyethylene, vinylCL, IL1b, age, sex, 高血圧, 心血管疾患)\n\nstr(data_plastic)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# ヒストグラム\ndata_plastic %>% \n  ggplot(aes(x = age)) +\n  geom_histogram(bins = 30, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()\n\n# 箱ひげ図\ndata_plastic %>% \n  ggplot(aes(x = age)) +\n  geom_boxplot(width = 0.2, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# ヒストグラム\ndata_plastic %>% \n  ggplot(aes(x = IL1b)) +\n  geom_histogram(bins = 30, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()\n\n# 箱ひげ図\ndata_plastic %>% \n  ggplot(aes(x = IL1b)) +\n  geom_boxplot(width = 0.2, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()\n","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1923,7 +1923,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">YCUepistats2026</h1>
+<h1 class="title">YCU epistats 2026</h1>
 </div>
 
 
@@ -1940,14 +1940,63 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
+<p>本講義では以下の論文を題材に疫学研究で報告される記述統計および推測統計を読み取り、解釈できるようになることが目標である。</p>
+<p>Marfella R. Microplastics and Nanoplastics in Atheromas and Cardiovascular Events. N Engl J Med. 2024 Mar 7;390(10):900-910<br>
+<a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2309822" class="uri">https://www.nejm.org/doi/full/10.1056/NEJMoa2309822</a></p>
+<p>このwebページでは以下を用いてデータ分析の演習を行う。</p>
+<p>・模擬データ (data_plastic.csv)</p>
+<p>・web r (<a href="https://docs.r-wasm.org/webr/latest/" class="uri">https://docs.r-wasm.org/webr/latest/</a>) :ブラウザ上で統計ソフトRを提供する仕組み</p>
+<p>まずデータを読み込む</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>コードの解説：</p>
+<p>パッケージ：</p>
+<p>関数：</p>
+<p>引数：</p>
+<p>” ” : #&lt;- :</p>
+<p>たとえば</p>
+<p>read_csv(“data_plastic.csv”)はxxxxxのような意味である</p>
+<p>head(data)はyyyyという意味である</p>
+<p>問題:データの読み込み</p>
+<p>data_plastic.csvには何人含まれていて、変数の数はいくつですか？</p>
 <div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="データの成型" class="level3">
+<h3 class="anchored" data-anchor-id="データの成型">データの成型</h3>
+<p>読み込んだデータを分析しやすい形式に加工します。</p>
+<p>%&gt;%: パイプ演算子。左のデータを右の関数へ順次渡します。</p>
+<p>&lt;-: 代入演算子。右側の結果を左側の変数に格納します。</p>
+<p>mutate(): 新しい変数を作成または既存の変数を変更します。</p>
+<p>factor(): 数値や文字列をカテゴリ変数（因子）に変換します。</p>
+<p>dplyr::select(): 必要な変数だけを選択します。</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="年齢の分布の可視化ヒストグラムと箱ひげ図" class="level3">
+<h3 class="anchored" data-anchor-id="年齢の分布の可視化ヒストグラムと箱ひげ図">年齢の分布の可視化（ヒストグラムと箱ひげ図）</h3>
+<p>ggplot2を用いてデータの分布を視覚的に表現します。</p>
+<p>ggplot(): グラフの基本設定。</p>
+<p>aes(): グラフに使用する変数を指定します。</p>
+<p>geom_histogram(): ヒストグラムを描画します。</p>
+<p>bins: ヒストグラムの棒の数を指定。</p>
+<p>fill: 棒の色を指定。</p>
+<p>color: 棒の境界線の色を指定。</p>
+<p>alpha: 透明度を指定（0: 完全透明〜1: 不透明）。</p>
+<p>geom_boxplot(): 箱ひげ図を描画します。</p>
+<p>width: 箱の幅を指定。</p>
+<p>xlim: 横軸の表示範囲を指定します。</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="il1bの分布の可視化" class="level3">
+<h3 class="anchored" data-anchor-id="il1bの分布の可視化">IL1bの分布の可視化</h3>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
