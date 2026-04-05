@@ -11,7 +11,7 @@
     "href": "YCUepistats2026.html#rの紹介",
     "title": "YCU epistats 2026",
     "section": "0. Rの紹介",
-    "text": "0. Rの紹介\n“R”はデータ分析のためのプログラミング言語であり、分析環境です。これから実際にRを用いて模擬データを分析し、データの手触りを感じてみましょう。\n下にあるwindowはRに指示(コード）を書ける場所です。普通の文書と違い、書かれた指示に基づき計算や処理が行われます。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nwindow内の指示を実行するときは以下の方法があります。　　　\n① Run codeボタンを押してwindow内のすべてを実行する\n② 実行したい行の先頭にカーソルを置いて、Ctrl + Enter (Windows) or Command（⌘） + Enter (Mac)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n出力結果を消したいときは以下をwindowに入力します。 rm(): 出力した対象（オブジェクト）を削除する関数\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nではこれから実際に演習用のデータの操作に移りましょう。\nうまく行かないときはこのwebページを再読み込みするとデフォルトの状態に戻れるので安心してください。"
+    "text": "0. Rの紹介\n“R”はデータ分析のためのプログラミング言語であり、分析環境です。これから実際にRを用いて模擬データを分析し、データの手触りを感じてみましょう。\n下にあるwindowはRに指示(コード）を書ける場所です。普通の文書と違い、書かれた指示に基づき計算や処理が行われます。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nwindow内の指示を実行するときは以下の方法があります。　　　\n① Run codeボタンを押してwindow内のすべてを実行する\n② 実行したい行の先頭にカーソルを置いて、Ctrl + Enter (Windows) or Command（⌘） + Enter (Mac)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n出力結果を消したいときは以下をwindowに入力します。\nrm(): 出力した対象（オブジェクト）を削除する関数\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nではこれから実際に演習用のデータの操作に移りましょう。\nうまく行かないときはこのwebページを再読み込みするとデフォルトの状態に戻れるので安心してください。"
   },
   {
     "objectID": "YCUepistats2026.html#データの準備",
