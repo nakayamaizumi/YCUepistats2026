@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ece42c8223ec2bf36298a08f122c9a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6b423f165eeea3787de40cb4f8e821c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -369,7 +369,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#background \nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(readr)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# URLを指定する（文字列は \"\" で囲む）\n\nurl <- \"https://raw.githubusercontent.com/nakayamaizumi/YCUepistats2026/refs/heads/main/data/data_plastic_2026trunc.csv\"\n\ndownload.file(url, \"data_plastic_2026trunc.csv\")\n\nlist.files() #データがうまくダウンロードできてるか確認","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(ggplot2)\nlibrary(dplyr)\nlibrary(readr)\n\ndata_plastic <- readr::read_csv(\"data_plastic_2026trunc.csv\")\n\nhead(data_plastic)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#日本語に変換\ndata_plastic <- data_plastic %>% \n  mutate(\n    MNPありなし = factor(MNP, levels = c(1,0), labels = c(\"あり\",\"なし\")),\n    sex = factor(male, levels = c(1,0), labels = c(\"男性\",\"女性\")),\n    高血圧 = factor(HTN, levels = c(1,0), labels = c(\"あり\",\"なし\")),\n    心血管疾患 = factor(CVD, levels = c(1,0), labels = c(\"発症\",\"なし\"))\n  ) %>%\n  select(rowID, MNPありなし, polyethylene, vinylCL, IL1b, age, sex, 高血圧, 心血管疾患)\n\nhead(data_plastic)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic\n\nnrow(__________)\n\nlength(__________)\n\nstr(__________)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# ヒストグラム\ndata_plastic %>% \n  ggplot(aes(x = age)) +\n  geom_histogram(binwidth = 2, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = age)) +\n  geom_histogram(binwidth = _____, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = _____)) +\n  geom_boxplot(width = 0.2, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 度数分布表\ndata_plastic %>% \nmutate(age_bin = cut(age, breaks = seq(0, max(age) + 2, by = 2), right = FALSE)) %>%\n  group_by(age_bin) %>%\n  summarise(frequency = n()) %>% \nrename(\n  年齢の階級 = age_bin,\n  度数 = frequency\n)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#年齢の平均と標準偏差\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  summarize(平均 = mean(_____),\n            分散 = var(_____),\n            標準偏差 = sd(_____))\n            ","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# ヒストグラム\ndata_plastic %>% \n  ggplot(aes(x = IL1b)) +\n  geom_histogram(bins = 30, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = _____)) +\n  geom_boxplot(width = 0.2, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# IL1bの範囲\n# (_____)をダブルクリックして適切なコードを記入してください\ndata_plastic %>% \n  summarize(平均 = mean(_____),\n            分散 = var(_____),\n            標準偏差 = sd(_____))","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#IL-1bの2群比較\n##ヒストグラム\n\ndata_plastic %>% \n  ggplot(aes(x = IL1b)) +\n  geom_histogram(bins = 30, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw() +\n  facet_wrap(~ MNP)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"##MNPごとのIL1bの箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = _____, y = _____)) +\n  geom_boxplot(width = 0.2, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()+\n  coord_flip()","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 要約値\n\ndata_plastic %>% \n  group_by(MNP) %>% \n  summarise(平均値=mean(IL1b),\n            標準偏差1.96倍の範囲 = paste(round(mean(IL1b)-1.96*sd(IL1b),2),\"から\",round(mean(IL1b)+1.96*sd(IL1b),2)),\n            中央値 = median(IL1b),\n            四分位範囲 = paste(quantile(IL1b,0,25),\"-\",quantile(IL1b,0.75)))","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"3+8","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#今の気分を出力 (print)\n# (_____)をダブルクリックして今の気分を入力してください\n\nprint(\"_______\")","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#現在の時刻を取得\nSys.time()\n\n#昼ご飯の時間を作成\n# (_____)をダブルクリックして今日のお昼ご飯の時間をHH:MM形式で入力してください(例 12:15)\nlunch <- as.POSIXct(\"2026-04-06 _____\")\n\n#昼ご飯までの残り時間\nlunch - Sys.time()","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# URLを指定する（文字列は \"\" で囲む）\n\nurl <- \"https://raw.githubusercontent.com/nakayamaizumi/YCUepistats2026/refs/heads/main/data/data_plastic_2026trunc.csv\"\n\ndownload.file(url, \"data_plastic_2026trunc.csv\")\n\nlist.files() #データがうまくダウンロードできてるか確認","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# ここは20秒ほどかかります\nlibrary(readr) # データを読み込むための関数群\nlibrary(dplyr) # データを成型するための関数群\nlibrary(ggplot2) # データを描画するための関数群","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"false","read-only":"false","results":"markup","warning":"true"}},{"code":"data_plastic <- readr::read_csv(\"data_plastic_2026trunc.csv\")\n\nhead(data_plastic)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 読み込んだデータを日本語に変換し、data_plasticとして上書き保存\n\ndata_plastic <- data_plastic %>% \n  mutate(\n    MNP = factor(MNP, levels = c(1,0), labels = c(\"あり\",\"なし\")),\n    sex = factor(male, levels = c(1,0), labels = c(\"男性\",\"女性\")),\n    高血圧 = factor(HTN, levels = c(1,0), labels = c(\"あり\",\"なし\")),\n    心血管疾患 = factor(CVD, levels = c(1,0), labels = c(\"発症\",\"なし\"))\n  ) %>%\n  select(rowID, MNP, polyethylene, vinylCL, IL1b, age, sex, 高血圧, 心血管疾患)\n\nhead(data_plastic)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic\n\nnrow(__________)\n\nlength(__________)\n\nstr(__________)","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# ヒストグラム\n\ndata_plastic %>% \n  ggplot(aes(x = age)) +\n  geom_histogram(binwidth = 2, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = age)) +\n  geom_histogram(binwidth = _____, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 度数分布表\ndata_plastic %>% \nmutate(age_bin = cut(age, breaks = seq(0, max(age) + 2, by = 2), right = FALSE)) %>%\n  group_by(age_bin) %>%\n  summarise(frequency = n()) %>% \nrename(\n  年齢の階級 = age_bin,\n  度数 = frequency\n)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = _____)) +\n  geom_boxplot(width = 0.2, fill = \"#00AFBB\", color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#年齢の平均と標準偏差\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  summarize(平均 = mean(_____),\n            分散 = var(_____),\n            標準偏差 = sd(_____))\n            ","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# ヒストグラム\ndata_plastic %>% \n  ggplot(aes(x = IL1b)) +\n  geom_histogram(bins = 30, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = _____)) +\n  geom_boxplot(width = 0.2, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# IL1bの範囲\n# (_____)をダブルクリックして適切なコードを記入してください\ndata_plastic %>% \n  summarize(平均 = mean(_____),\n            分散 = var(_____),\n            標準偏差 = sd(_____))","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"data_plastic %>% \n  count(MNP)","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"## ヒストグラム\nggplot(data_plastic, aes(x = age, fill = MNP)) +\n  geom_histogram(\n    position = \"identity\", \n    binwidth = 2, \n    alpha = 0.4,\n    color = \"black\",\n    linewidth = 0.2) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"##箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\ndata_plastic %>% \n  ggplot(aes(x = _____, y = _____, fill = MNP)) +\n  geom_boxplot(width = 0.2, color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()+\n  coord_flip()","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#IL-1bの2群比較\n##ヒストグラム\n\ndata_plastic %>% \n  ggplot(aes(x = IL1b)) +\n  geom_histogram(bins = 30, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw() +\n  facet_wrap(~ MNP)","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"##MNPごとのIL1bの箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\n\ndata_plastic %>% \n  ggplot(aes(x = _____, y = _____)) +\n  geom_boxplot(width = 0.2, fill = \"#FFDB6D\", color = \"#C4961A\", alpha = 0.6) +\n  theme_bw()+\n  coord_flip()","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 要約値\n\ndata_plastic %>% \n  group_by(MNP) %>% \n  summarise(平均値=mean(IL1b),\n            標準偏差1.96倍の範囲 = paste(round(mean(IL1b)-1.96*sd(IL1b),2),\"から\",round(mean(IL1b)+1.96*sd(IL1b),2)),\n            中央値 = median(IL1b),\n            四分位範囲 = paste(quantile(IL1b,0,25),\"-\",quantile(IL1b,0.75)))","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1640,15 +1640,21 @@ globalThis.qwebrExecuteCode = async function (
   <ul>
   <li><a href="#r演習-day1" id="toc-r演習-day1" class="nav-link active" data-scroll-target="#r演習-day1">📊 R演習 Day1</a>
   <ul class="collapse">
+  <li><a href="#rの紹介" id="toc-rの紹介" class="nav-link" data-scroll-target="#rの紹介">0. Rの紹介</a></li>
   <li><a href="#データの準備" id="toc-データの準備" class="nav-link" data-scroll-target="#データの準備">1. データの準備</a></li>
   <li><a href="#データの読み込み" id="toc-データの読み込み" class="nav-link" data-scroll-target="#データの読み込み">2. データの読み込み</a></li>
   <li><a href="#データの成型" id="toc-データの成型" class="nav-link" data-scroll-target="#データの成型">3. データの成型</a></li>
   <li><a href="#データの基本情報やってみよう①" id="toc-データの基本情報やってみよう①" class="nav-link" data-scroll-target="#データの基本情報やってみよう①">4. データの基本情報（やってみよう①）</a></li>
   <li><a href="#年齢の分布データの基本情報やってみよう②" id="toc-年齢の分布データの基本情報やってみよう②" class="nav-link" data-scroll-target="#年齢の分布データの基本情報やってみよう②">5. 年齢の分布データの基本情報（やってみよう②）</a></li>
   <li><a href="#il1bの分布データの基本情報" id="toc-il1bの分布データの基本情報" class="nav-link" data-scroll-target="#il1bの分布データの基本情報">6. IL1bの分布データの基本情報</a></li>
-  <li><a href="#変数の比較" id="toc-変数の比較" class="nav-link" data-scroll-target="#変数の比較">7. 2変数の比較</a></li>
-  <li><a href="#ヒストグラム" id="toc-ヒストグラム" class="nav-link" data-scroll-target="#ヒストグラム">ヒストグラム</a></li>
+  <li><a href="#つの変数の比較" id="toc-つの変数の比較" class="nav-link" data-scroll-target="#つの変数の比較">7. 2つの変数の比較</a>
+  <ul class="collapse">
+  <li><a href="#mnp" id="toc-mnp" class="nav-link" data-scroll-target="#mnp">MNP</a></li>
+  <li><a href="#年齢" id="toc-年齢" class="nav-link" data-scroll-target="#年齢">年齢</a></li>
+  <li><a href="#il1b" id="toc-il1b" class="nav-link" data-scroll-target="#il1b">IL1b</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#r演習-day2" id="toc-r演習-day2" class="nav-link" data-scroll-target="#r演習-day2">📊 R演習 Day2</a></li>
   </ul>
 </nav>
     </div>
@@ -1958,16 +1964,36 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>本講義では以下の論文を題材に疫学研究で報告される記述統計および推測統計を読み取り、解釈できるようになることが目標である。</p>
+<p>2026年4月6日<br>
+本講義では以下の論文を題材に疫学研究で報告される記述統計および推測統計を読み取り、解釈できるようになることが目標である。</p>
 <p>Marfella R. Microplastics and Nanoplastics in Atheromas and Cardiovascular Events. N Engl J Med. 2024 Mar 7;390(10):900-910<br>
 <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2309822" class="uri">https://www.nejm.org/doi/full/10.1056/NEJMoa2309822</a></p>
 <p>このwebページでは以下を用いてデータ分析の演習を行う。</p>
-<p>・模擬データ (data_plastic.csv)</p>
-<p>・web r (<a href="https://docs.r-wasm.org/webr/latest/" class="uri">https://docs.r-wasm.org/webr/latest/</a>) :ブラウザ上で統計ソフトRを提供する仕組み</p>
+<p>・模擬データ (data_plastic.csv)<br>
+・web r (<a href="https://docs.r-wasm.org/webr/latest/" class="uri">https://docs.r-wasm.org/webr/latest/</a>) :ブラウザ上で統計ソフトRを提供する仕組み</p>
 <section id="r演習-day1" class="level1">
 <h1>📊 R演習 Day1</h1>
+<section id="rの紹介" class="level2">
+<h2 class="anchored" data-anchor-id="rの紹介">0. Rの紹介</h2>
+<p>“R”はデータ分析のためのプログラミング言語であり、分析環境です。これから実際にRを用いて模擬データを分析し、データの手触りを感じてみましょう。</p>
+<p>下にあるwindowはRに指示(コード）を書ける場所です。普通の文書と違い、書かれた指示に基づき計算や処理が行われます。</p>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>window内の指示を実行するときは以下の方法があります。　　　</p>
+<p>① Run codeボタンを押してwindow内のすべてを実行する<br>
+② 実行したい行の先頭にカーソルを置いて、Ctrl + Enter (Windows) or Command（⌘） + Enter (Mac)</p>
+<div class="cell">
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<p>出力結果を消したいときは以下をwindowに入力します。 <code>rm()</code>: 出力した対象（オブジェクト）を削除する関数</p>
+<div class="cell">
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<p>ではこれから実際に演習用のデータの操作に移りましょう。<br>
+うまく行かないときはこのwebページを再読み込みするとデフォルトの状態に戻れるので安心してください。</p>
+</section>
 <section id="データの準備" class="level2">
 <h2 class="anchored" data-anchor-id="データの準備">1. データの準備</h2>
 <ul>
@@ -1975,120 +2001,209 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </li>
 <li><code>list.files()</code>：フォルダ内のファイル一覧を表示する</li>
 </ul>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="データの読み込み" class="level2">
 <h2 class="anchored" data-anchor-id="データの読み込み">2. データの読み込み</h2>
-<p><code>library()</code>：パッケージを読み込む <code>read_csv()</code>：CSVファイルを読み込む <code>head()</code>：データの先頭を表示する</p>
-<p>Rでの関数の使い方： 関数：機能() 使い方：機能(入力) 例：read_csv(“data_plastic_2026trunc.csv”) ” “:文字列として認識させる指示。データを指定するときなどに用いる。</p>
-<div id="qwebr-insertion-location-3"></div>
+<p><strong>Rでの関数の使い方</strong><br>
+■ *関数**は、「材料（入力）を入れると結果が出る装置」です。イメージとしては「ボタン」のようなものです。</p>
+<p>👉 ボタンを押す（＝関数を使う）と、入力(input)に対し決まった処理が実行され、出力(output)が得られます。</p>
+<p>■ 書き方の基本</p>
+<p><code>関数名(入力)</code></p>
+<p><strong>関数名</strong>：何をするかの指定（例：読み込む、計算する）</p>
+<p><strong>入力</strong>：関数に渡す情報。引数（ひきすう）と呼ぶ。</p>
+<p><code>read_csv("data_plastic_2026trunc.csv")</code></p>
+<p>これは次のように分解できます：　　</p>
+<p><code>read_csv</code> → CSVファイルを読み込む機能</p>
+<p>“data_plastic_2026trunc.csv” → 読み込むファイルの名前　　　</p>
+<p>👉 “data_plastic_2026trunc.csv”というファイルを読み込んでください」という意味　　</p>
+<p><code>" "</code>:ダブルクオーテーションは文字列として認識させる指示。データを指定するときなどに用いる。　　</p>
+<p>まずこれから使用する関数を呼び出します。関数がセットになったまとまりをパッケージと呼びます。</p>
+<p><code>library()</code>：パッケージを呼び出す</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>これで必要な関数を使用する準備が整いました。</p>
+<p>つぎに実際にデータを読み込みます。</p>
+<p><code>read_csv()</code>：CSVファイルを読み込む<br>
+<code>head()</code>：データの先頭を表示する</p>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="データの成型" class="level2">
 <h2 class="anchored" data-anchor-id="データの成型">3. データの成型</h2>
-<p>読み込んだデータを分析しやすい形式に加工します。</p>
+<p>読み込んだデータを分析しやすい形式に加工します。ここでは変数を日本語に変換しましょう。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>元の変数</th>
+<th>新しい変数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MNP</td>
+<td>MNP, ありなし</td>
+</tr>
+<tr class="even">
+<td>sex</td>
+<td>sex, 男性女性</td>
+</tr>
+<tr class="odd">
+<td>HTN</td>
+<td>高血圧</td>
+</tr>
+<tr class="even">
+<td>CVD</td>
+<td>心血管疾患</td>
+</tr>
+</tbody>
+</table>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>%&gt;%: パイプ演算子。左のデータを右の関数へ順次渡します。</p>
 <p>&lt;-: 代入演算子。右側の結果を左側の変数に格納します。</p>
-<p><code>mutate()</code>：変数を作成・変換する <code>factor()</code>：カテゴリ変数に変換する <code>select()</code>：必要な変数を選択する levels, labels: 1,0のデータをあり/なしに変換している。</p>
-<p>シャープ # : スクリプト（文書）内に注釈を書くときに用いる。</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>シャープ # : スクリプト（文書）内に注釈を書くときに用いる。コメントアウトと呼ばれ、実行されない。</p>
+<p><code>mutate()</code>：変数を作成・変換する<br>
+<code>factor()</code>：カテゴリ変数に変換する<br>
+<code>select()</code>：必要な変数を選択する<br>
+levels, labels: もともと1,0のデータをあり/なしに変換している。</p>
 </section>
 <section id="データの基本情報やってみよう①" class="level2">
 <h2 class="anchored" data-anchor-id="データの基本情報やってみよう①">4. データの基本情報（やってみよう①）</h2>
-<p>データ（data_plastic)の中で以下を確認してみましょう：</p>
-<p>人数（行数） 変数の数（列数） データの型（連続変数・カテゴリ変数）</p>
-<p><code>nrow()</code>：行数を数える <code>length()</code>：列数を数える <code>str()</code>：データ構造を確認する。structureの略。</p>
-<div id="qwebr-insertion-location-5"></div>
+<p>データ（data_plastic)の中で以下を確認してみましょう：　</p>
+<p>人数（行数）<br>
+変数の数（列数）<br>
+データの型（連続変数・カテゴリ変数）</p>
+<p><code>nrow()</code>：行数を数える<br>
+<code>length()</code>：列数を数える<br>
+<code>str()</code>：データ構造を確認する。structureの略。</p>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>変数の型の確認</p>
-<p>tibble:読み込んでいるデータの型 num: 連続変数 int: 連続変数（整数のみ） Factor: カテゴリ変数 w/ 2 levels: 2つの水準をもつカテゴリ変数 (男性か女性か、有りか無しか等)</p>
-<p>連続変数: rowID(登録番号),polyethylene, vinylCL,IL1b,age カテゴリ変数：sex,高血圧,心血管疾患</p>
+<p><strong>変数の型の確認</strong></p>
+<p>tibble:読み込んでいるデータの型<br>
+num: 連続変数<br>
+Factor: カテゴリ変数<br>
+w/ 2 levels: 2つの水準をもつカテゴリ変数 (男性か女性か、有りか無しか等)</p>
+<p>今回のデータ内の変数の型は以下です。</p>
+<p><strong>連続変数</strong>: rowID(登録番号),polyethylene, vinylCL,IL1b,age<br>
+<strong>カテゴリ変数</strong>：sex,高血圧,MNP,心血管疾患</p>
 </section>
 <section id="年齢の分布データの基本情報やってみよう②" class="level2">
 <h2 class="anchored" data-anchor-id="年齢の分布データの基本情報やってみよう②">5. 年齢の分布データの基本情報（やってみよう②）</h2>
 <p>年齢の分布を可視化して以下を確認しましょう：</p>
-<p>①年齢は平均は何歳か ②年齢のばらつきは左右対称か偏っているか</p>
-<p>ヒストグラム</p>
-<p><code>ggplot()</code>: グラフの基本設定。 <code>aes()</code>: グラフに使用する変数を指定します <code>geom_histogram()</code>: ヒストグラムを描画します。 binwidth: ヒストグラムの棒の幅を指定。2歳ごとに指定。 fill: 棒の色を指定 color: 棒の境界線の色を指定。 alpha: 透明度を指定（0: 完全透明〜1: 不透明）。 <code>scale_x_continuous()</code>, limits: 横軸の表示範囲を指定します。 <code>theme_bw()</code>:描画のスタイル。いろいろ選べる。</p>
-<div id="qwebr-insertion-location-6"></div>
+<p>①年齢の均は何歳か<br>
+②年齢のばらつきは左右対称か偏っているか</p>
+<p><strong>ヒストグラム</strong></p>
+<p><code>ggplot()</code>: グラフの基本設定。<br>
+<code>aes()</code>: グラフに使用する変数を指定します<br>
+<code>geom_histogram()</code>: ヒストグラムを描画します。<br>
+binwidth: ヒストグラムの棒の幅を指定。ここでは2歳ごとを指定<br>
+fill: 棒の色を指定<br>
+color: 棒の境界線の色を指定。<br>
+alpha: 透明度を指定（0: 完全透明〜1: 不透明）。<br>
+<code>scale_x_continuous()</code>, limits: 横軸の表示範囲を指定します。<br>
+<code>theme_bw()</code>:描画のスタイル。いろいろ選べる。</p>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>*ヒストグラムの幅を変えてみましょう</p>
 <div class="cell">
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<p>箱ひげ図</p>
-<p><code>geom_boxplot()</code>: 箱ひげ図を描画します。 width: 箱の幅を指定</p>
-<div id="qwebr-insertion-location-8"></div>
+<p><strong>度数分布表</strong>　　</p>
+<p>ヒストグラムの源となる年齢の度数分布表を作成します。コードを細かく覚える必要はありません。</p>
+<p><code>mutate()</code>:データ内の変数を作り変える関数<br>
+age_bin:年齢の階級を作成。ここでは2歳ごとに人数を集計。<br>
+<code>group_by()</code>, <code>summarise()</code>：年齢の階級ごとの人数を集計させている<br>
+<code>n()</code>:当てはまる人数を数える関数<br>
+<code>rename()</code>:変数の名前を日本語に変更</p>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>度数分布表</p>
-<p><code>mutate()</code>:データ内の変数を作り変える age_bin:年齢の階級を作成。ここでは2歳ごとに人数を集計。 <code>group_by()</code>, <code>summarise()</code>：年齢の階級ごとの人数を集計させている <code>n()</code>:当てはまる人数を数える関数 <code>rename()</code>:変数の名前を日本語に変更</p>
-<div id="qwebr-insertion-location-9"></div>
+<p><strong>箱ひげ図</strong></p>
+<p>年齢の箱ひげ図を書いて分布の形状を確認しましょう　 年齢はどのあたりに固まっているでしょうか。<br>
+外れ値はありますか？</p>
+<p><code>geom_boxplot()</code>: 箱ひげ図を描画します。　</p>
+<p>width: 箱の幅を指定　　</p>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>平均と標準偏差の算出 <code>summarize()</code>：要約統計量を計算 <code>mean()</code>：平均 <code>var()</code>：分散。variance <code>sd()</code>：標準偏差。standard deviation</p>
-<div id="qwebr-insertion-location-10"></div>
+<p><strong>平均と標準偏差の算出</strong></p>
+<p>連続変数である年齢の要約値を算出してみましょう。</p>
+<p><code>summarize()</code>：要約値を計算<br>
+<code>mean()</code>：平均<br>
+<code>var()</code>：分散。variance<br>
+<code>sd()</code>：標準偏差。standard deviation</p>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="il1bの分布データの基本情報" class="level2">
 <h2 class="anchored" data-anchor-id="il1bの分布データの基本情報">6. IL1bの分布データの基本情報</h2>
-<p>ヒストグラム</p>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>箱ひげ図</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>要約値</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="変数の比較" class="level2">
-<h2 class="anchored" data-anchor-id="変数の比較">7. 2変数の比較</h2>
-<p>MNPの有無で①年齢、②IL-1bの分布に違いがあるか可視化しましょう</p>
-<p>MNPごとの年齢のヒストグラム</p>
-<p><code>fill = MNP</code>：ここでMNPの有無ごとにヒストグラムを作成するように指示している - position: ヒストグラムの表示方法を指定<br>
-- “identity”：グラフを重ねて表示する（比較に使う）</p>
-<ul>
-<li><p>binwidth: ヒストグラムの棒の幅を指定（ここでは2歳ごと）</p></li>
-<li><p>alpha: 透明度を指定（0に近いほど透明、1に近いほど不透明）<br>
-→ 重なりを見やすくするために使う</p></li>
-<li><p>color: 棒の境界線の色を指定</p></li>
-<li><p>linewidth: 棒の境界線の太さを指定</p></li>
-<li><p><code>scale_x_continuous()</code> の limits: 横軸の表示範囲を指定</p>
-<ul>
-<li>c(40, 100)：40歳から100歳まで表示する ```gqdglpci #MNPの有無ごとの年齢の分布</li>
-</ul></li>
-</ul>
-</section>
-<section id="ヒストグラム" class="level2">
-<h2 class="anchored" data-anchor-id="ヒストグラム">ヒストグラム</h2>
-<p>ggplot(data_plastic, aes(x = age, fill = MNP)) + geom_histogram( position = “identity”, binwidth = 2, alpha = 0.4, color = “black”, linewidth = 0.2) + scale_x_continuous(limits = c(40, 100)) + theme_bw()</p>
-<pre><code>
-MNPごとの年齢の箱ひげ図
-y = MNP, fill = MNP：ここでMNPの有無ごとに箱ひげ図を作成するように指示している
-`coord_flip()`:図の縦横を反転して表示する
-
-```{webr-r}
-##箱ひげ図
-# (_____)をダブルクリックして適切なコードを記入してください
-data_plastic %&gt;% 
-  ggplot(aes(x = _____, y = _____, fill = MNP)) +
-  geom_boxplot(width = 0.2, color = "black", alpha = 0.6) +
-  scale_x_continuous(limits = c(40, 100)) +
-  theme_bw()+
-  coord_flip()
-</code></pre>
-<p>MNPごとのIL1bの分布</p>
+<p>ここではもう一つの連続変数である炎症性サイトカイン IL-1bの量について分布を確認していきます。年齢の分布と比べて何が違うでしょうか？</p>
+<p><strong>ヒストグラム</strong></p>
+<p>コードは年齢の時と同じです。ここでは分布の形に注目してください。</p>
+<p>fill = “#FFDB6D” 棒の塗りつぶし色を指定<br>
+color = “#C4961A”　棒の枠線の色を指定</p>
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>箱ひげ図</strong></p>
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>要約値</strong></p>
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-
-
 </section>
+<section id="つの変数の比較" class="level2">
+<h2 class="anchored" data-anchor-id="つの変数の比較">7. 2つの変数の比較</h2>
+<p>MNP（微小プラスチック）の有無で①年齢、②IL-1bの分布に違いがあるか可視化しましょう</p>
+<section id="mnp" class="level3">
+<h3 class="anchored" data-anchor-id="mnp">MNP</h3>
+<p>頸動脈プラークにMNPが見つかった人と見つからなかった人の人数を確認しましょう</p>
+<p><code>count()</code>: 入力した変数のカテゴリごとの人数を数える</p>
+<div id="qwebr-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="年齢" class="level3">
+<h3 class="anchored" data-anchor-id="年齢">年齢</h3>
+<p><strong>MNPごとの年齢のヒストグラム</strong></p>
+<p><code>fill = MNP</code>：ここでMNPの有無ごとにヒストグラムを作成するように指示している<br>
+<code>position</code>: ヒストグラムの表示方法を指定<br>
+“identity”：グラフを重ねて表示する（比較するため）<br>
+binwidth: ヒストグラムの棒の幅を指定（ここでは2歳ごと）<br>
+alpha: 透明度を指定（0に近いほど透明、1に近いほど不透明）<br>
+→ 重なりを見やすくするために使う</p>
+<p>color: 棒の境界線の色を指定<br>
+linewidth: 棒の境界線の太さを指定</p>
+<p><code>scale_x_continuous()</code> の limits: 横軸の表示範囲を指定<br>
+- c(40, 100)：40歳から100歳まで表示する</p>
+<div id="qwebr-insertion-location-18"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>MNPごとの年齢の箱ひげ図</strong></p>
+<p>y = MNP, fill = MNP：ここでMNPの有無ごとに箱ひげ図を作成するように指示している<br>
+<code>coord_flip()</code>:図の縦横を反転して表示する</p>
+<div id="qwebr-insertion-location-19"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="il1b" class="level3">
+<h3 class="anchored" data-anchor-id="il1b">IL1b</h3>
+<p><strong>MNPごとのIL1bの分布</strong></p>
+<p><code>facet_wrap(~ MNP)</code>: ここでMNPごとにヒストグラムを作成するように指定している</p>
+<div id="qwebr-insertion-location-20"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qwebr-insertion-location-21"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qwebr-insertion-location-22"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><code>paste()</code>: ()内のものをまとめて文字列として表示する<br>
+<code>round()</code>: 表示する小数点以下の桁数を指定<br>
+<code>quantile(IL1b, 0.25)</code>: IL1bの25パーセンタイル点を出力</p>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+</section>
+<section id="r演習-day2" class="level1">
+<h1>📊 R演習 Day2</h1>
+
+
 </section>
 
 </main> <!-- /main -->

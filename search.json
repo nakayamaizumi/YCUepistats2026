@@ -4,7 +4,14 @@
     "href": "YCUepistats2026.html",
     "title": "YCU epistats 2026",
     "section": "",
-    "text": "本講義では以下の論文を題材に疫学研究で報告される記述統計および推測統計を読み取り、解釈できるようになることが目標である。\nMarfella R. Microplastics and Nanoplastics in Atheromas and Cardiovascular Events. N Engl J Med. 2024 Mar 7;390(10):900-910\nhttps://www.nejm.org/doi/full/10.1056/NEJMoa2309822\nこのwebページでは以下を用いてデータ分析の演習を行う。\n・模擬データ (data_plastic.csv)\n・web r (https://docs.r-wasm.org/webr/latest/) :ブラウザ上で統計ソフトRを提供する仕組み"
+    "text": "2026年4月6日\n本講義では以下の論文を題材に疫学研究で報告される記述統計および推測統計を読み取り、解釈できるようになることが目標である。\nMarfella R. Microplastics and Nanoplastics in Atheromas and Cardiovascular Events. N Engl J Med. 2024 Mar 7;390(10):900-910\nhttps://www.nejm.org/doi/full/10.1056/NEJMoa2309822\nこのwebページでは以下を用いてデータ分析の演習を行う。\n・模擬データ (data_plastic.csv)\n・web r (https://docs.r-wasm.org/webr/latest/) :ブラウザ上で統計ソフトRを提供する仕組み"
+  },
+  {
+    "objectID": "YCUepistats2026.html#rの紹介",
+    "href": "YCUepistats2026.html#rの紹介",
+    "title": "YCU epistats 2026",
+    "section": "0. Rの紹介",
+    "text": "0. Rの紹介\n“R”はデータ分析のためのプログラミング言語であり、分析環境です。これから実際にRを用いて模擬データを分析し、データの手触りを感じてみましょう。\n下にあるwindowはRに指示(コード）を書ける場所です。普通の文書と違い、書かれた指示に基づき計算や処理が行われます。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nwindow内の指示を実行するときは以下の方法があります。　　　\n① Run codeボタンを押してwindow内のすべてを実行する\n② 実行したい行の先頭にカーソルを置いて、Ctrl + Enter (Windows) or Command（⌘） + Enter (Mac)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n出力結果を消したいときは以下をwindowに入力します。 rm(): 出力した対象（オブジェクト）を削除する関数\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nではこれから実際に演習用のデータの操作に移りましょう。\nうまく行かないときはこのwebページを再読み込みするとデフォルトの状態に戻れるので安心してください。"
   },
   {
     "objectID": "YCUepistats2026.html#データの準備",
@@ -18,48 +25,41 @@
     "href": "YCUepistats2026.html#データの読み込み",
     "title": "YCU epistats 2026",
     "section": "2. データの読み込み",
-    "text": "2. データの読み込み\nlibrary()：パッケージを読み込む read_csv()：CSVファイルを読み込む head()：データの先頭を表示する\nRでの関数の使い方： 関数：機能() 使い方：機能(入力) 例：read_csv(“data_plastic_2026trunc.csv”) ” “:文字列として認識させる指示。データを指定するときなどに用いる。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "2. データの読み込み\nRでの関数の使い方\n■ *関数**は、「材料（入力）を入れると結果が出る装置」です。イメージとしては「ボタン」のようなものです。\n👉 ボタンを押す（＝関数を使う）と、入力(input)に対し決まった処理が実行され、出力(output)が得られます。\n■ 書き方の基本\n関数名(入力)\n関数名：何をするかの指定（例：読み込む、計算する）\n入力：関数に渡す情報。引数（ひきすう）と呼ぶ。\nread_csv(\"data_plastic_2026trunc.csv\")\nこれは次のように分解できます：　　\nread_csv → CSVファイルを読み込む機能\n“data_plastic_2026trunc.csv” → 読み込むファイルの名前　　　\n👉 “data_plastic_2026trunc.csv”というファイルを読み込んでください」という意味　　\n\" \":ダブルクオーテーションは文字列として認識させる指示。データを指定するときなどに用いる。　　\nまずこれから使用する関数を呼び出します。関数がセットになったまとまりをパッケージと呼びます。\nlibrary()：パッケージを呼び出す\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nこれで必要な関数を使用する準備が整いました。\nつぎに実際にデータを読み込みます。\nread_csv()：CSVファイルを読み込む\nhead()：データの先頭を表示する\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "YCUepistats2026.html#データの成型",
     "href": "YCUepistats2026.html#データの成型",
     "title": "YCU epistats 2026",
     "section": "3. データの成型",
-    "text": "3. データの成型\n読み込んだデータを分析しやすい形式に加工します。\n%&gt;%: パイプ演算子。左のデータを右の関数へ順次渡します。\n&lt;-: 代入演算子。右側の結果を左側の変数に格納します。\nmutate()：変数を作成・変換する factor()：カテゴリ変数に変換する select()：必要な変数を選択する levels, labels: 1,0のデータをあり/なしに変換している。\nシャープ # : スクリプト（文書）内に注釈を書くときに用いる。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "3. データの成型\n読み込んだデータを分析しやすい形式に加工します。ここでは変数を日本語に変換しましょう。\n\n\n\n元の変数\n新しい変数\n\n\n\n\nMNP\nMNP, ありなし\n\n\nsex\nsex, 男性女性\n\n\nHTN\n高血圧\n\n\nCVD\n心血管疾患\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n%&gt;%: パイプ演算子。左のデータを右の関数へ順次渡します。\n&lt;-: 代入演算子。右側の結果を左側の変数に格納します。\nシャープ # : スクリプト（文書）内に注釈を書くときに用いる。コメントアウトと呼ばれ、実行されない。\nmutate()：変数を作成・変換する\nfactor()：カテゴリ変数に変換する\nselect()：必要な変数を選択する\nlevels, labels: もともと1,0のデータをあり/なしに変換している。"
   },
   {
     "objectID": "YCUepistats2026.html#データの基本情報やってみよう①",
     "href": "YCUepistats2026.html#データの基本情報やってみよう①",
     "title": "YCU epistats 2026",
     "section": "4. データの基本情報（やってみよう①）",
-    "text": "4. データの基本情報（やってみよう①）\nデータ（data_plastic)の中で以下を確認してみましょう：\n人数（行数） 変数の数（列数） データの型（連続変数・カテゴリ変数）\nnrow()：行数を数える length()：列数を数える str()：データ構造を確認する。structureの略。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n変数の型の確認\ntibble:読み込んでいるデータの型 num: 連続変数 int: 連続変数（整数のみ） Factor: カテゴリ変数 w/ 2 levels: 2つの水準をもつカテゴリ変数 (男性か女性か、有りか無しか等)\n連続変数: rowID(登録番号),polyethylene, vinylCL,IL1b,age カテゴリ変数：sex,高血圧,心血管疾患"
+    "text": "4. データの基本情報（やってみよう①）\nデータ（data_plastic)の中で以下を確認してみましょう：　\n人数（行数）\n変数の数（列数）\nデータの型（連続変数・カテゴリ変数）\nnrow()：行数を数える\nlength()：列数を数える\nstr()：データ構造を確認する。structureの略。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n変数の型の確認\ntibble:読み込んでいるデータの型\nnum: 連続変数\nFactor: カテゴリ変数\nw/ 2 levels: 2つの水準をもつカテゴリ変数 (男性か女性か、有りか無しか等)\n今回のデータ内の変数の型は以下です。\n連続変数: rowID(登録番号),polyethylene, vinylCL,IL1b,age\nカテゴリ変数：sex,高血圧,MNP,心血管疾患"
   },
   {
     "objectID": "YCUepistats2026.html#年齢の分布データの基本情報やってみよう②",
     "href": "YCUepistats2026.html#年齢の分布データの基本情報やってみよう②",
     "title": "YCU epistats 2026",
     "section": "5. 年齢の分布データの基本情報（やってみよう②）",
-    "text": "5. 年齢の分布データの基本情報（やってみよう②）\n年齢の分布を可視化して以下を確認しましょう：\n①年齢は平均は何歳か ②年齢のばらつきは左右対称か偏っているか\nヒストグラム\nggplot(): グラフの基本設定。 aes(): グラフに使用する変数を指定します geom_histogram(): ヒストグラムを描画します。 binwidth: ヒストグラムの棒の幅を指定。2歳ごとに指定。 fill: 棒の色を指定 color: 棒の境界線の色を指定。 alpha: 透明度を指定（0: 完全透明〜1: 不透明）。 scale_x_continuous(), limits: 横軸の表示範囲を指定します。 theme_bw():描画のスタイル。いろいろ選べる。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n*ヒストグラムの幅を変えてみましょう\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n箱ひげ図\ngeom_boxplot(): 箱ひげ図を描画します。 width: 箱の幅を指定\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n度数分布表\nmutate():データ内の変数を作り変える age_bin:年齢の階級を作成。ここでは2歳ごとに人数を集計。 group_by(), summarise()：年齢の階級ごとの人数を集計させている n():当てはまる人数を数える関数 rename():変数の名前を日本語に変更\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n平均と標準偏差の算出 summarize()：要約統計量を計算 mean()：平均 var()：分散。variance sd()：標準偏差。standard deviation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "5. 年齢の分布データの基本情報（やってみよう②）\n年齢の分布を可視化して以下を確認しましょう：\n①年齢の均は何歳か\n②年齢のばらつきは左右対称か偏っているか\nヒストグラム\nggplot(): グラフの基本設定。\naes(): グラフに使用する変数を指定します\ngeom_histogram(): ヒストグラムを描画します。\nbinwidth: ヒストグラムの棒の幅を指定。ここでは2歳ごとを指定\nfill: 棒の色を指定\ncolor: 棒の境界線の色を指定。\nalpha: 透明度を指定（0: 完全透明〜1: 不透明）。\nscale_x_continuous(), limits: 横軸の表示範囲を指定します。\ntheme_bw():描画のスタイル。いろいろ選べる。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n*ヒストグラムの幅を変えてみましょう\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n度数分布表　　\nヒストグラムの源となる年齢の度数分布表を作成します。コードを細かく覚える必要はありません。\nmutate():データ内の変数を作り変える関数\nage_bin:年齢の階級を作成。ここでは2歳ごとに人数を集計。\ngroup_by(), summarise()：年齢の階級ごとの人数を集計させている\nn():当てはまる人数を数える関数\nrename():変数の名前を日本語に変更\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n箱ひげ図\n年齢の箱ひげ図を書いて分布の形状を確認しましょう　 年齢はどのあたりに固まっているでしょうか。\n外れ値はありますか？\ngeom_boxplot(): 箱ひげ図を描画します。　\nwidth: 箱の幅を指定　　\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n平均と標準偏差の算出\n連続変数である年齢の要約値を算出してみましょう。\nsummarize()：要約値を計算\nmean()：平均\nvar()：分散。variance\nsd()：標準偏差。standard deviation\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "YCUepistats2026.html#il1bの分布データの基本情報",
     "href": "YCUepistats2026.html#il1bの分布データの基本情報",
     "title": "YCU epistats 2026",
     "section": "6. IL1bの分布データの基本情報",
-    "text": "6. IL1bの分布データの基本情報\nヒストグラム\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n箱ひげ図\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n要約値\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "6. IL1bの分布データの基本情報\nここではもう一つの連続変数である炎症性サイトカイン IL-1bの量について分布を確認していきます。年齢の分布と比べて何が違うでしょうか？\nヒストグラム\nコードは年齢の時と同じです。ここでは分布の形に注目してください。\nfill = “#FFDB6D” 棒の塗りつぶし色を指定\ncolor = “#C4961A”　棒の枠線の色を指定\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n箱ひげ図\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n要約値\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "YCUepistats2026.html#変数の比較",
-    "href": "YCUepistats2026.html#変数の比較",
+    "objectID": "YCUepistats2026.html#つの変数の比較",
+    "href": "YCUepistats2026.html#つの変数の比較",
     "title": "YCU epistats 2026",
-    "section": "7. 2変数の比較",
-    "text": "7. 2変数の比較\nMNPの有無で①年齢、②IL-1bの分布に違いがあるか可視化しましょう\nMNPごとの年齢のヒストグラム\nfill = MNP：ここでMNPの有無ごとにヒストグラムを作成するように指示している - position: ヒストグラムの表示方法を指定\n- “identity”：グラフを重ねて表示する（比較に使う）\n\nbinwidth: ヒストグラムの棒の幅を指定（ここでは2歳ごと）\nalpha: 透明度を指定（0に近いほど透明、1に近いほど不透明）\n→ 重なりを見やすくするために使う\ncolor: 棒の境界線の色を指定\nlinewidth: 棒の境界線の太さを指定\nscale_x_continuous() の limits: 横軸の表示範囲を指定\n\nc(40, 100)：40歳から100歳まで表示する ```gqdglpci #MNPの有無ごとの年齢の分布"
-  },
-  {
-    "objectID": "YCUepistats2026.html#ヒストグラム",
-    "href": "YCUepistats2026.html#ヒストグラム",
-    "title": "YCU epistats 2026",
-    "section": "ヒストグラム",
-    "text": "ヒストグラム\nggplot(data_plastic, aes(x = age, fill = MNP)) + geom_histogram( position = “identity”, binwidth = 2, alpha = 0.4, color = “black”, linewidth = 0.2) + scale_x_continuous(limits = c(40, 100)) + theme_bw()\n\nMNPごとの年齢の箱ひげ図\ny = MNP, fill = MNP：ここでMNPの有無ごとに箱ひげ図を作成するように指示している\n`coord_flip()`:図の縦横を反転して表示する\n\n```{webr-r}\n##箱ひげ図\n# (_____)をダブルクリックして適切なコードを記入してください\ndata_plastic %&gt;% \n  ggplot(aes(x = _____, y = _____, fill = MNP)) +\n  geom_boxplot(width = 0.2, color = \"black\", alpha = 0.6) +\n  scale_x_continuous(limits = c(40, 100)) +\n  theme_bw()+\n  coord_flip()\n\nMNPごとのIL1bの分布\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "section": "7. 2つの変数の比較",
+    "text": "7. 2つの変数の比較\nMNP（微小プラスチック）の有無で①年齢、②IL-1bの分布に違いがあるか可視化しましょう\n\nMNP\n頸動脈プラークにMNPが見つかった人と見つからなかった人の人数を確認しましょう\ncount(): 入力した変数のカテゴリごとの人数を数える\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n年齢\nMNPごとの年齢のヒストグラム\nfill = MNP：ここでMNPの有無ごとにヒストグラムを作成するように指示している\nposition: ヒストグラムの表示方法を指定\n“identity”：グラフを重ねて表示する（比較するため）\nbinwidth: ヒストグラムの棒の幅を指定（ここでは2歳ごと）\nalpha: 透明度を指定（0に近いほど透明、1に近いほど不透明）\n→ 重なりを見やすくするために使う\ncolor: 棒の境界線の色を指定\nlinewidth: 棒の境界線の太さを指定\nscale_x_continuous() の limits: 横軸の表示範囲を指定\n- c(40, 100)：40歳から100歳まで表示する\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nMNPごとの年齢の箱ひげ図\ny = MNP, fill = MNP：ここでMNPの有無ごとに箱ひげ図を作成するように指示している\ncoord_flip():図の縦横を反転して表示する\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nIL1b\nMNPごとのIL1bの分布\nfacet_wrap(~ MNP): ここでMNPごとにヒストグラムを作成するように指定している\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\npaste(): ()内のものをまとめて文字列として表示する\nround(): 表示する小数点以下の桁数を指定\nquantile(IL1b, 0.25): IL1bの25パーセンタイル点を出力"
   }
 ]
