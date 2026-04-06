@@ -63,10 +63,24 @@
     "text": "7. 2つの変数の比較\nMNP（微小プラスチック）の有無で①年齢、②IL-1bの分布に違いがあるか可視化しましょう\n\nMNP\n頸動脈プラークにMNPが見つかった人と見つからなかった人の人数を確認しましょう\ncount(): 入力した変数のカテゴリごとの人数を数える\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n年齢\nMNPごとの年齢のヒストグラム\nfill = MNP：ここでMNPの有無ごとにヒストグラムを作成するように指示している\nposition: ヒストグラムの表示方法を指定\n“identity”：グラフを重ねて表示する（比較するため）\nbinwidth: ヒストグラムの棒の幅を指定（ここでは2歳ごと）\nalpha: 透明度を指定（0に近いほど透明、1に近いほど不透明）\n→ 重なりを見やすくするために使う\ncolor: 棒の境界線の色を指定\nlinewidth: 棒の境界線の太さを指定\nscale_x_continuous() の limits: 横軸の表示範囲を指定\n- c(40, 100)：40歳から100歳まで表示する\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nMNPごとの年齢の箱ひげ図\ny = MNP, fill = MNP：ここでMNPの有無ごとに箱ひげ図を作成するように指示している\ncoord_flip():図の縦横を反転して表示する\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nIL1b\nMNPごとのIL1bの分布\nfacet_wrap(~ MNP): ここでMNPごとにヒストグラムを作成するように指定している\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\npaste(): ()内のものをまとめて文字列として表示する\nround(): 表示する小数点以下の桁数を指定\nquantile(IL1b, 0.25): IL1bの25パーセンタイル点を出力"
   },
   {
-    "objectID": "YCUepistats2026.html#つの変数の比較-1",
-    "href": "YCUepistats2026.html#つの変数の比較-1",
+    "objectID": "YCUepistats2026.html#群の連続変数の検定",
+    "href": "YCUepistats2026.html#群の連続変数の検定",
     "title": "YCU epistats 2026",
-    "section": "1. 2つの変数の比較",
-    "text": "1. 2つの変数の比較\nプラスチック粒子（MNP）が炎症反応(IL-1b, 連続変数）を増加させているか?\nこの疑問を検定していきましょう。\n①t検定: 2群のIL1bの平均値の差を検定\n②Wilcoxon順位和検定: 2群のIL1bの分布の違いを検定\n①まず2群の差についてt検定を行います　\n\n\n\nstudent t test\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "section": "1. 2群の連続変数の検定",
+    "text": "1. 2群の連続変数の検定\nプラスチック粒子（MNP）が炎症反応(IL-1b, 連続変数）を増加させているか?\nこの疑問を検定していきましょう。\n①t検定: 2群のIL1bの平均値の差を検定\n②Wilcoxon順位和検定: 2群のIL1bの分布の違いを検定\n2群の平均の差を検定する: t検定\nまず2群の差についてt検定を行います　\nともに正規分布をした2群の平均値の差はt分布に従うと考えられます。この性質を利用して2群の平均値の差を検定する方法をt検定と言います。\nt検定には①Studentのt検定 (2群のばらつきが等しいと想定されるときに適応)と②Welchのt検定(2群とも正規分布と見なせるがばらつきは異なるときに適応)の2種類があり、検定したいデータの分布によって選択します。\n　 　　 　　 　　\nt.test(): t検定を行う関数\ncat(): 結果をつなげて出力する関数\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nMNPあり群となし群でIL1bの平均値は大きく異なり、2群の平均値の差についてのt検定はp&lt;0.001と非常に小さい結果でした。\nしかしIL1bの記述統計を見直すと、正規分部しているとは見なせません。これではt検定の仮定を満たしているとはいえず、検定の適応は不適切です。\nこの場合、偏ったIL1bの分布に適した検定を選択します。\n2群の分布の差を検定する: Mann-Whitney U検定\n　 wilcox.test(): Mann-Whitney U検定(Wilcoxon順位和検定)を実行する関数\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nMann-Whitney U検定の結果、MNPあり群の方がIL1bが大きい傾向があると判断される。"
+  },
+  {
+    "objectID": "YCUepistats2026.html#つのカテゴリ変数の関連の検定",
+    "href": "YCUepistats2026.html#つのカテゴリ変数の関連の検定",
+    "title": "YCU epistats 2026",
+    "section": "2. 2つのカテゴリ変数の関連の検定",
+    "text": "2. 2つのカテゴリ変数の関連の検定\nこれまでは連続変数の2群比較を行ってきました。ここからはカテゴリ変数に違いがあるかを検定していきます。\n2つのカテゴリ変数の関連を検定: カイ二乗検定\nMNP（微小プラスチック）あり群となし群では追跡期間中の心血管疾患の発症割合が異なっていました。カテゴリ変数の要約は集計表で行います。\ntable(): 集計表を作成する\ncount(): カテゴリ変数の各水準の人数を数える\npivot_wider(): データを立て向きから横向きに並べ替える。ここでは集計表の形を整えるため。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n2つのカテゴリ変数の関連、ここではMNPありなしと心血管疾患の関連はカイ二乗検定を適応して判断します。\n　\nchisq.test(): カイ二乗検定を実行する。集計表をinputする。\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "YCUepistats2026.html#推定",
+    "href": "YCUepistats2026.html#推定",
+    "title": "YCU epistats 2026",
+    "section": "3. 推定",
+    "text": "3. 推定"
   }
 ]
